@@ -11,7 +11,7 @@ public class Tiket {
         password = "123";
     }
 
-    public boolean loginCuy() {
+    public boolean tiketCuy() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         try {
@@ -32,5 +32,4 @@ public class Tiket {
             return false;
         }
     }
-
 }
