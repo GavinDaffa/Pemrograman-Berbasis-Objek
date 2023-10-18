@@ -33,5 +33,4 @@ public class Tiket {
         }
     }
 
-    // Anda dapat menambahkan method lainnya yang diperlukan di sini
 }
