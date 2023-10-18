@@ -1,13 +1,11 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 
 public class MainClassTiket {
     public static void main(String[] args) {
         Tiket tiket = new Tiket();
         boolean isLoggedIn = tiket.tiketCuy();
-        HashMap<String, Login> users = new HashMap<>();
         String namaHotel = "";
         int jumlahKamar = 0;
         double hargaPerKamar = 0.0;
@@ -22,7 +20,7 @@ public class MainClassTiket {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
             while (true) {
-                System.out.println("\n---Menu Tiket---:");
+                System.out.println("\n----Menu Tiket----:");
                 System.out.println("1. Input Data Transaksi");
                 System.out.println("2. Lihat Data Tiket");
                 System.out.println("3. Keluar");
@@ -33,7 +31,7 @@ public class MainClassTiket {
 
                     switch (choice) {
                         case 1:
-                        System.out.println("\n-----Input Data Transaksi-----");
+                        System.out.println("\n------Input Data Transaksi------");
                         System.out.print("Nama Hotel: ");
                         namaHotel = reader.readLine();
                         System.out.print("Jumlah Kamar: ");
@@ -54,7 +52,7 @@ public class MainClassTiket {
                         double asuransi = jumlahPenumpang * 29000;
                         totalHarga = totalHargaTiketPesawat + asuransi;;
 
-                        System.out.println("\n---Input Data Transaksi---");
+                        System.out.println("\n----Input Data Transaksi----");
                         System.out.println("Nama Hotel          : " + namaHotel);
                         System.out.println("Jumlah Kamar        : " + jumlahKamar);
                         System.out.println("Harga Per Kamar     : " + hargaPerKamar);
@@ -65,7 +63,7 @@ public class MainClassTiket {
                             break;
 
                         case 2:
-                        System.out.println("\n-------Transaksi Tiket Pesawat dan Hotel-------");
+                        System.out.println("\n--------Transaksi Tiket Pesawat dan Hotel--------");
                         System.out.println("Tujuan : " + tujuan);
                         System.out.println("Nama Hotel: " + namaHotel + " - Jumlah Kamar: " + jumlahKamar + " - Harga Per Kamar: " + hargaPerKamar);
                         System.out.println("Total Biaya Kamar Hotel dengan diskon: " + totalBiayaKamar);
