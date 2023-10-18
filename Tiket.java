@@ -11,7 +11,7 @@ public class Tiket {
         password = "123";
     }
 
-    public boolean doLogin() {
+    public boolean loginCuy() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         try {

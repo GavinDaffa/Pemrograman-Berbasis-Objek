@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class MainClassTiket {
     public static void main(String[] args) {
         Tiket tiket = new Tiket();
-        boolean isLoggedIn = tiket.doLogin();
+        boolean isLoggedIn = tiket.loginCuy();
         HashMap<String, Login> users = new HashMap<>();
         String namaHotel = "";
         int jumlahKamar = 0;
