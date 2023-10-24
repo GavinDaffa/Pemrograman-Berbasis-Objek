@@ -91,6 +91,5 @@ public class Contoh2 {
         System.out.println("Nama   : " + nama);
         System.out.println("Prodi  : " + prodi);
         System.out.println("MK     : " + mataKuliah);
-        System.out.println("NA     : " + hitungNA());
     }
 }
