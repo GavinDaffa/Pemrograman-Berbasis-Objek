@@ -4,14 +4,14 @@ public class MainClassTiket {
     public static void main(String[] args) {
         Tiket tiket = new Tiket();
         boolean isLoggedIn = false;
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (!isLoggedIn) {
             try {
                 System.out.print("Masukkan username: ");
-                String inputUsername = reader.readLine();
+                String inputUsername = br.readLine();
                 System.out.print("Masukkan password: ");
-                String inputPassword = reader.readLine();
+                String inputPassword = br.readLine();
                 isLoggedIn = tiket.tiketCuy(inputUsername, inputPassword);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -26,25 +26,25 @@ public class MainClassTiket {
 
             try {
                 System.out.print("Pilih menu (1-3): ");
-                int choice = Integer.parseInt(reader.readLine());
+                int choice = Integer.parseInt(br.readLine());
 
                 switch (choice) {
                     case 1:
                         System.out.println("\n------Input Data Transaksi------");
                         System.out.print("Nama Hotel: ");
-                        tiket.setNamaHotel(reader.readLine());
+                        tiket.setNamaHotel(br.readLine());
                         System.out.print("Jumlah Kamar: ");
-                        tiket.setJumlahKamar(Integer.parseInt(reader.readLine()));
+                        tiket.setJumlahKamar(Integer.parseInt(br.readLine()));
                         System.out.print("Harga Per Kamar: ");
-                        tiket.setHargaPerKamar(Double.parseDouble(reader.readLine()));
+                        tiket.setHargaPerKamar(Double.parseDouble(br.readLine()));
                         System.out.print("Nama Pesawat: ");
-                        tiket.setNamaPesawat(reader.readLine());
+                        tiket.setNamaPesawat(br.readLine());
                         System.out.print("Jumlah Penumpang: ");
-                        tiket.setJumlahPenumpang(Integer.parseInt(reader.readLine()));
+                        tiket.setJumlahPenumpang(Integer.parseInt(br.readLine()));
                         System.out.print("Harga Tiket Pesawat: ");
-                        tiket.setHargaTiketPesawat(Double.parseDouble(reader.readLine()));
+                        tiket.setHargaTiketPesawat(Double.parseDouble(br.readLine()));
                         System.out.print("Tujuan: ");
-                        tiket.setTujuan(reader.readLine());
+                        tiket.setTujuan(br.readLine());
 
                         double totalHargaTiketPesawat = (tiket.getHargaTiketPesawat() * tiket.getJumlahPenumpang());
                         tiket.setTotalBiayaKamar((tiket.getHargaPerKamar() - (0.45 * tiket.getHargaPerKamar())) * tiket.getJumlahKamar());
