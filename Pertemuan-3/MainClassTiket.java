@@ -2,75 +2,86 @@ import java.io.*;
 
 public class MainClassTiket {
     public static void main(String[] args) {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Tiket tiket = new Tiket();
+        boolean isLoggedIn = false;
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        // Login
-        String inputUsername = "";
-        String inputPassword = "";
-
-        try {
-            System.out.print("Masukkan username: ");
-            inputUsername = reader.readLine();
-            System.out.print("Masukkan password: ");
-            inputPassword = reader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        while (!isLoggedIn) {
+            try {
+                System.out.print("Masukkan username: ");
+                String inputUsername = reader.readLine();
+                System.out.print("Masukkan password: ");
+                String inputPassword = reader.readLine();
+                isLoggedIn = tiket.tiketCuy(inputUsername, inputPassword);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-        boolean isLoggedIn = tiket.tiketCuy(inputUsername, inputPassword);
+        while (true) {
+            System.out.println("\n----Menu Tiket----:");
+            System.out.println("1. Input Data Transaksi");
+            System.out.println("2. Lihat Data Tiket");
+            System.out.println("3. Keluar");
 
-        if (isLoggedIn) {
-            while (true) {
-                System.out.println("\n----Menu Tiket----:");
-                System.out.println("1. Input Data Transaksi");
-                System.out.println("2. Lihat Data Tiket");
-                System.out.println("3. Keluar");
+            try {
+                System.out.print("Pilih menu (1-3): ");
+                int choice = Integer.parseInt(reader.readLine());
 
-                try {
-                    System.out.print("Pilih menu (1-3): ");
-                    int choice = Integer.parseInt(reader.readLine());
+                switch (choice) {
+                    case 1:
+                        System.out.println("\n------Input Data Transaksi------");
+                        System.out.print("Nama Hotel: ");
+                        tiket.setNamaHotel(reader.readLine());
+                        System.out.print("Jumlah Kamar: ");
+                        tiket.setJumlahKamar(Integer.parseInt(reader.readLine()));
+                        System.out.print("Harga Per Kamar: ");
+                        tiket.setHargaPerKamar(Double.parseDouble(reader.readLine()));
+                        System.out.print("Nama Pesawat: ");
+                        tiket.setNamaPesawat(reader.readLine());
+                        System.out.print("Jumlah Penumpang: ");
+                        tiket.setJumlahPenumpang(Integer.parseInt(reader.readLine()));
+                        System.out.print("Harga Tiket Pesawat: ");
+                        tiket.setHargaTiketPesawat(Double.parseDouble(reader.readLine()));
+                        System.out.print("Tujuan: ");
+                        tiket.setTujuan(reader.readLine());
 
-                    switch (choice) {
-                        case 1:
-                            System.out.println("\n------Input Data Transaksi------");
-                            System.out.print("Nama Hotel: ");
-                            String namaHotel = reader.readLine();
-                            System.out.print("Jumlah Kamar: ");
-                            int jumlahKamar = Integer.parseInt(reader.readLine());
-                            System.out.print("Harga Per Kamar: ");
-                            double hargaPerKamar = Double.parseDouble(reader.readLine());
-                            System.out.print("Nama Pesawat: ");
-                            String namaPesawat = reader.readLine();
-                            System.out.print("Jumlah Penumpang: ");
-                            int jumlahPenumpang = Integer.parseInt(reader.readLine());
-                            System.out.print("Harga Tiket Pesawat: ");
-                            double hargaTiketPesawat = Double.parseDouble(reader.readLine());
-                            System.out.print("Tujuan: ");
-                            String tujuan = reader.readLine();
+                        double totalHargaTiketPesawat = (tiket.getHargaTiketPesawat() * tiket.getJumlahPenumpang());
+                        tiket.setTotalBiayaKamar((tiket.getHargaPerKamar() - (0.45 * tiket.getHargaPerKamar())) * tiket.getJumlahKamar());
+                        double asuransi = tiket.getJumlahPenumpang() * 29000;
+                        tiket.setTotalHarga(totalHargaTiketPesawat + asuransi);
 
-                            tiket.setTiketData(namaHotel, jumlahKamar, hargaPerKamar, namaPesawat, jumlahPenumpang, hargaTiketPesawat, tujuan);
-                            break;
+                        System.out.println("\n----Input Data Transaksi----");
+                        System.out.println("Nama Hotel          : " + tiket.getNamaHotel());
+                        System.out.println("Jumlah Kamar        : " + tiket.getJumlahKamar());
+                        System.out.println("Harga Per Kamar     : " + tiket.getHargaPerKamar());
+                        System.out.println("Nama Pesawat        : " + tiket.getNamaPesawat());
+                        System.out.println("Jumlah Penumpang    : " + tiket.getJumlahPenumpang());
+                        System.out.println("Harga Tiket Pesawat : " + tiket.getHargaTiketPesawat());
+                        System.out.println("Tujuan              : " + tiket.getTujuan());
+                        break;
 
-                        case 2:
-                            tiket.tampilkanTiketData();
-                            break;
+                    case 2:
+                        System.out.println("\n--------Transaksi Tiket Pesawat dan Hotel--------");
+                        System.out.println("Tujuan : " + tiket.getTujuan());
+                        System.out.println("Nama Hotel: " + tiket.getNamaHotel() + " - Jumlah Kamar: " + tiket.getJumlahKamar() + " - Harga Per Kamar: " + tiket.getHargaPerKamar());
+                        System.out.println("Total Biaya Kamar Hotel dengan diskon: " + tiket.getTotalBiayaKamar());
+                        System.out.println("Nama Pesawat: " + tiket.getNamaPesawat() + " - Jumlah Penumpang: " + tiket.getJumlahPenumpang() + " - Harga Tiket Pesawat: " + tiket.getHargaTiketPesawat());
+                        System.out.println("Total Harga Tiket Pesawat: " + tiket.getTotalHarga());
+                        break;
 
-                        case 3:
-                            System.out.println("Terima kasih.");
-                            System.exit(0);
-                            break;
+                    case 3:
+                        System.out.println("Terimakasih.");
+                        System.exit(0);
+                        break;
 
-                        default:
-                            System.out.println("Pilihan tidak valid. Silakan pilih menu yang benar.");
-                            break;
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    default:
+                        System.out.println("Pilihan tidak valid. Silakan pilih menu yang benar.");
+                        break;
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } else {
-            System.out.println("Keluar dari program.");
         }
     }
 }
