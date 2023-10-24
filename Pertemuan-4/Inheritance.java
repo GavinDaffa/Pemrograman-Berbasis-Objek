@@ -1,20 +1,20 @@
 import java.util.Scanner;
 
-// Superclass (kelas induk)
+// kelas induk
 class Vehicle {
     void display() {
         System.out.println("Ini adalah kendaraan.");
     }
 }
 
-// Subclass (kelas turunan)
+// kelas turunan
 class Car extends Vehicle {
     void display() {
         System.out.println("Ini adalah mobil.");
     }
 }
 
-// Subclass lainnya (kelas turunan)
+// kelas turunan
 class Motorcycle extends Vehicle {
     void display() {
         System.out.println("Ini adalah sepeda motor.");
