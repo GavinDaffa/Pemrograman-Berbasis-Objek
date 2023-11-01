@@ -1,26 +1,40 @@
 package PBOQ1_Tugas2_20410100065;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main_Kasir {
     public static void main(String[] args) {
         Kasir kasir = new Kasir();
         Scanner scanner = new Scanner(System.in);
+        Map<String, Integer> belanjaanMap = new HashMap<>();
 
-        System.out.println("Selamat datang di Kasir!");
-        System.out.println("Menu Makanan dan Harga:");
+        System.out.print("Masukkan nama Anda: ");
+        String namaPelanggan = scanner.nextLine();
+
+        System.out.println("----Enjoy your Food----");
+        System.out.println("\nMenu Makanan dan Harga:");
         System.out.println("1. Soto Ayam - Rp 13.000");
         System.out.println("2. Nasi Rawon - Rp 15.000");
         System.out.println("3. Mie Goreng - Rp 12.000");
         System.out.println("4. Nasi Pecel - Rp 10.000");
         System.out.println("5. Nasi Goreng - Rp 13.000");
-        System.out.println("Menu Minuman dan Harga:");
+        System.out.println("\nMenu Minuman dan Harga:");
         System.out.println("6. Es Jeruk - Rp 4.000");
         System.out.println("7. Es Campur - Rp 6.000");
 
-        System.out.print("Pilih menu (pisahkan dengan spasi): ");
+        System.out.print("Pilih menu (jika lebih dari 1 pisahkan dengan spasi): ");
         String inputMenu = scanner.nextLine();
         String[] belanjaan = inputMenu.split(" ");
+
+        for (String item : belanjaan) {
+            if (belanjaanMap.containsKey(item)) {
+                belanjaanMap.put(item, belanjaanMap.get(item) + 1);
+            } else {
+                belanjaanMap.put(item, 1);
+            }
+        }
 
         System.out.print("Apakah Anda member (ya/tidak)? ");
         String inputMember = scanner.nextLine();
@@ -28,21 +42,24 @@ public class Main_Kasir {
 
         int totalHarga = kasir.hitungTotalHarga(belanjaan, isMember);
 
-        System.out.println("\nMenu yang dipesan:");
-        for (String item : belanjaan) {
+        System.out.println("\n-----PEMBAYARAN-----");
+        System.out.println("Nama = " + namaPelanggan);
+        for (String item : belanjaanMap.keySet()) {
             int nomorMenu = Integer.parseInt(item);
             String namaMenu = getNamaMenu(nomorMenu);
             int hargaMenu = getHargaMenu(nomorMenu);
-            System.out.println(namaMenu + " - Rp " + hargaMenu);
+            int jumlahItem = belanjaanMap.get(item);
+            System.out.println(namaMenu + " - Rp " + hargaMenu + " = " + jumlahItem);
         }
-
-        System.out.println("Total Harga: Rp " + totalHarga);
+        System.out.println("----------------------------");
+        System.out.println("Total = Rp " + totalHarga);
 
         if (isMember) {
             int potongan = (int) (totalHarga * 0.2);
             int hargaSetelahPotongan = totalHarga - potongan;
-            System.out.println("\nPotongan Member (20%): Rp " + potongan);
-            System.out.println("\nHarga setelah potongan: Rp " + hargaSetelahPotongan);
+            System.out.println("\nPembayaran Atas nama " + namaPelanggan);
+            System.out.println("Potongan Member (20%) = Rp " + potongan);
+            System.out.println("Harga setelah potongan = Rp " + hargaSetelahPotongan);
         }
     }
 
