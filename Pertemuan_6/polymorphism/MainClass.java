@@ -24,7 +24,6 @@ public class MainClass {
                 case 2:
                     System.out.println("-- 2. Menu Transaksi --");
                     pengelola.menuTransaksi();
-                    System.out.println("--- Cetak Data ---");
                     pengelola.cetakData();
                     break;
                 case 3:

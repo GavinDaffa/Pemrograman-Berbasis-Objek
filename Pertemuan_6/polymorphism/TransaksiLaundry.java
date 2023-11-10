@@ -46,8 +46,16 @@ public class TransaksiLaundry extends Laundry {
         System.out.println("Tanggal cuci: " + getTglCuci());
         System.out.println("Tanggal ambil: " + getTglAmbil());
         System.out.println("Berat cucian: " + getBerat());
-        System.out.println("Subtotal: " + getTotalHarga()); // Subtotal (harga + berat)
-        System.out.println("Total Harga: " + hargaExpress()); // + layanan express
+        int totalHarga = 0;
+        if (getMetode().equalsIgnoreCase("Express")) {
+        totalHarga = hargaExpress();
+            } else if (getMetode().equalsIgnoreCase("Kilat")) {
+            totalHarga = hargakilat();
+                } else {
+                totalHarga = getTotalHarga();
+            }
+        System.out.println("Subtotal: " + getTotalHarga());
+        System.out.println("Total Harga: " + totalHarga); // Subtotal (harga + berat)
     }
 
     public void transaksi(String kode) {
@@ -58,9 +66,20 @@ public class TransaksiLaundry extends Laundry {
         System.out.println("Tanggal cuci: " + getTglCuci());
         System.out.println("Tanggal ambil: " + getTglAmbil());
         System.out.println("Berat cucian: " + getBerat());
-        System.out.println("Subtotal: " + getTotalHarga()); // Subtotal (harga + berat)
-        System.out.println("Total Harga: " + hargaExpress()); // + layanan express
+        
+        int totalHarga = 0;
+        if (getMetode().equalsIgnoreCase("Express")) {
+        totalHarga = hargaExpress();
+            } else if (getMetode().equalsIgnoreCase("Kilat")) {
+            totalHarga = hargakilat();
+                } else {
+                totalHarga = getTotalHarga();
+            }
+        System.out.println("Subtotal: " + getTotalHarga());
+        System.out.println("Total Harga: " + totalHarga); // Subtotal (harga + berat)
+
     }
+    
 
     // Overriding
     @Override
@@ -80,4 +99,8 @@ public class TransaksiLaundry extends Laundry {
         }
         return total;
     }
+    
+
+
+
 }
