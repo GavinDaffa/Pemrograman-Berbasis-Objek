@@ -26,4 +26,7 @@ public class Laundry {
     public int hargaExpress() {
         return 5000;
     }
+    public int hargakilat(){
+        return 2500;
+    }
 }

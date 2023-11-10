@@ -17,7 +17,7 @@ public class PengelolaLaundry {
             String jenisLaundry = br.readLine();
             System.out.print("Masukkan harga: ");
             int harga = Integer.parseInt(br.readLine());
-            System.out.print("Masukkan metode: ");
+            System.out.print("Masukkan paket: ");
             String metode = br.readLine();
 
             Laundry laundry = new Laundry(jenisLaundry, metode, harga);
@@ -37,6 +37,8 @@ public class PengelolaLaundry {
     public void menuTransaksi() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        
+        
         System.out.print("Masukkan Nama Pelanggan: ");
         String namaPelanggan = br.readLine();
         System.out.print("Masukkan berat cucian: ");
@@ -45,6 +47,8 @@ public class PengelolaLaundry {
         String tglCuci = br.readLine();
         System.out.print("Masukkan tanggal Ambil: ");
         String tglAmbil = br.readLine();
+        System.out.print("Masukkan Kode transaksi: ");
+        String kode = br.readLine();
 
         System.out.println("-- Pilih Jenis Laundry --");
         for (int i = 0; i < dataLaundry.size(); i++) {
@@ -56,10 +60,10 @@ public class PengelolaLaundry {
         int selectedLaundryIndex = Integer.parseInt(br.readLine()) - 1;
         Laundry selectedLaundry = dataLaundry.get(selectedLaundryIndex);
 
-        System.out.print("Pilih metode (Reguler/Express): ");
+        System.out.print("Pilih metode (Reguler/Kilat/Express): ");
         String metode = br.readLine();
 
-        TransaksiLaundry transaksiLaundry = new TransaksiLaundry(selectedLaundry.getJenisLaundry(), metode, selectedLaundry.getHarga(), "TRX" + transaksiCounter, namaPelanggan, tglCuci, tglAmbil, berat);
+        TransaksiLaundry transaksiLaundry = new TransaksiLaundry(selectedLaundry.getJenisLaundry(), metode, selectedLaundry.getHarga(), kode, namaPelanggan, tglCuci, tglAmbil, berat);
         transaksi.add(transaksiLaundry);
         transaksiCounter++;
 

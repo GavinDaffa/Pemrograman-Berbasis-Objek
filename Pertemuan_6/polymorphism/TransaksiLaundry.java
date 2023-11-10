@@ -41,7 +41,7 @@ public class TransaksiLaundry extends Laundry {
     public void transaksi() {
         System.out.println("Nama Pelanggan: " + getNamaPelanggan());
         System.out.println("Jenis Laundry: " + getJenisLaundry());
-        System.out.println("Metode (Reguler/Express): " + getMetode());
+        System.out.println("Metode (Reguler/Kilat/Express): " + getMetode());
         System.out.println("Harga jasa: " + getHarga());
         System.out.println("Tanggal cuci: " + getTglCuci());
         System.out.println("Tanggal ambil: " + getTglAmbil());
@@ -53,7 +53,7 @@ public class TransaksiLaundry extends Laundry {
     public void transaksi(String kode) {
         System.out.println("Nama Pelanggan: " + getNamaPelanggan());
         System.out.println("Jenis Laundry: " + getJenisLaundry());
-        System.out.println("Metode (Reguler/Express): " + getMetode());
+        System.out.println("Metode (Reguler/Kilat/Express): " + getMetode());
         System.out.println("Harga jasa: " + getHarga());
         System.out.println("Tanggal cuci: " + getTglCuci());
         System.out.println("Tanggal ambil: " + getTglAmbil());
@@ -66,8 +66,17 @@ public class TransaksiLaundry extends Laundry {
     @Override
     public int hargaExpress() {
         int total = getTotalHarga();
-        if (getMetode().equalsIgnoreCase("express")) {
+        if (getMetode().equalsIgnoreCase("Express")) {
             total += super.hargaExpress();
+        }
+        return total;
+    }
+
+    @Override
+    public int hargakilat() {
+        int total = getTotalHarga();
+        if (getMetode().equalsIgnoreCase("Kilat")) {
+            total += super.hargakilat();
         }
         return total;
     }
