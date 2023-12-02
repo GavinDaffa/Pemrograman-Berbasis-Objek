@@ -1,3 +1,4 @@
+package RuangBangun;
 public class Segitiga {
     private double alas, tinggi;
     

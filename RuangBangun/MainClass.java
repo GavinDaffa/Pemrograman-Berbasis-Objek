@@ -1,3 +1,5 @@
+package RuangBangun;
+
 import java.io.*;
 
 public class MainClass {

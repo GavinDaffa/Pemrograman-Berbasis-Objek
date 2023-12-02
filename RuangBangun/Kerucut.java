@@ -1,3 +1,4 @@
+package RuangBangun;
 public class Kerucut extends Segitiga {
     private double jariJari;
     private double tinggiKerucut;
